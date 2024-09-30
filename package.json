@@ -1,0 +1,19 @@
+{
+  "name": "nodejs_micro",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "compression": "^1.7.4",
+    "helmet": "^8.0.0",
+    "morgan": "^1.10.0"
+  }
+}
