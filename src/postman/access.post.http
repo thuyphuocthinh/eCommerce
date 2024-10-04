@@ -1,0 +1,21 @@
+@url_dev=http://localhost:3000/v1/api/
+### signup
+POST {{url_dev}}shop/signup
+Content-Type: application/json
+x-api-key: c19384c2a5aaf8cd082ffe57553271e71d01171ec0876ed824810ddb862cbf9a92940c05b74d331b9969f4f7b4d3286298822c0e011887d836c079a3b05119e7
+
+{
+    "name": "TPTShop",
+    "email": "tpq1@gmail.com",
+    "password": "123abc"
+}
+
+### login
+POST {{url_dev}}shop/login
+Content-Type: application/json
+x-api-key: c19384c2a5aaf8cd082ffe57553271e71d01171ec0876ed824810ddb862cbf9a92940c05b74d331b9969f4f7b4d3286298822c0e011887d836c079a3b05119e7
+
+{
+    "email": "tpq1@gmail.com",
+    "password": "123sasfsafabc"
+}
