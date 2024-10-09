@@ -24,8 +24,8 @@ class ErrorResponse extends Error {
 
 class ConflictRequestError extends ErrorResponse {
   constructor(
-    message = ReasonStatusCode.CONFLICT,
-    statusCode = StatusCode.CONFLICT
+    message = reasonPhrases.CONFLICT,
+    statusCode = statusCodes.CONFLICT
   ) {
     super(message, statusCode);
   }
@@ -33,8 +33,8 @@ class ConflictRequestError extends ErrorResponse {
 
 class BadRequestError extends ErrorResponse {
   constructor(
-    message = ReasonStatusCode.FORBIDDEN,
-    statusCode = StatusCode.FORBIDDEN
+    message = reasonPhrases.BAD_REQUEST,
+    statusCode = statusCodes.BAD_REQUEST
   ) {
     super(message, statusCode);
   }
@@ -42,8 +42,8 @@ class BadRequestError extends ErrorResponse {
 
 class AuthFailureError extends ErrorResponse {
   constructor(
-    message = ReasonStatusCode.UNAUTHORIZED,
-    statusCode = StatusCode.UNAUTHORIZED
+    message = reasonPhrases.UNAUTHORIZED,
+    statusCode = statusCodes.UNAUTHORIZED
   ) {
     super(message, statusCode);
   }
