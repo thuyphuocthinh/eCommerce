@@ -18,6 +18,20 @@ class ProductController {
     }).send(res);
   };
 
+  updateProduct = async (req, res, next) => {
+    new SuccessResponse({
+      message: "Updated product successfully",
+      metadata: await ProductServiceV2.ProductFactory.updateProduct(
+        req.body.product_type,
+        req.params.product_id,
+        {
+          ...req.body,
+          product_shop: req.user.userId,
+        }
+      ),
+    }).send(res);
+  };
+
   publishProduct = async (req, res, next) => {
     new SuccessResponse({
       message: "Created new product successfully",
@@ -69,6 +83,24 @@ class ProductController {
       message: "Get list search success",
       metadata: await ProductServiceV2.ProductFactory.searchProducts({
         keySearch: req.params.keySearch,
+      }),
+    }).send(res);
+  };
+
+  findAllProducts = async (req, res, next) => {
+    new SuccessResponse({
+      message: "Get list products success",
+      metadata: await ProductServiceV2.ProductFactory.findAllProducts(
+        req.query
+      ),
+    }).send(res);
+  };
+
+  findProduct = async (req, res, next) => {
+    new SuccessResponse({
+      message: "Get product success",
+      metadata: await ProductServiceV2.ProductFactory.findProduct({
+        product_id: req.params.product_id,
       }),
     }).send(res);
   };
