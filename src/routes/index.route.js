@@ -10,6 +10,7 @@ router.use(permission("0000"));
 // check permissions
 
 router.use("/v1/api/product", require("./product/index.route"));
+router.use("/v1/api/discount", require("./discount/index.route"));
 router.use("/v1/api", require("./access/index.route"));
 
 module.exports = router;

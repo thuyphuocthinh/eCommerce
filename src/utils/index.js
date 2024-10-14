@@ -1,6 +1,9 @@
 "use strict";
 
 const _ = require("lodash");
+const { Types } = require("mongoose");
+
+const convertToObjectIdMongoose = (id) => Types.ObjectId(id);
 
 const getInfoData = ({ fields = [], object = {} }) => {
   return _.pick(object, fields);
@@ -36,27 +39,28 @@ const removeUndefinedObject = (object) => {
   })
 */
 
-const updateNestedObjectParser = obj => {
+const updateNestedObjectParser = (obj) => {
   const final = {};
-  Object.keys(obj).forEach(key => {
-    if (obj[key] === null || obj[key] === undefined) { 
+  Object.keys(obj).forEach((key) => {
+    if (obj[key] === null || obj[key] === undefined) {
       console.log(`ingore key`, key);
-    } else if(typeof obj[key] === "object" && !Array.isArray(obj[key])) {
+    } else if (typeof obj[key] === "object" && !Array.isArray(obj[key])) {
       const response = updateNestedObjectParser(obj[key]);
-      Object.keys(response).forEach(a => {
+      Object.keys(response).forEach((a) => {
         final[`${key}.${a}`] = response[a];
-      })
+      });
     } else {
       final[key] = obj[key];
     }
-  })
+  });
   return final;
-}
+};
 
 module.exports = {
   getInfoData,
   getSelectData,
   unGetSelectData,
   removeUndefinedObject,
-  updateNestedObjectParser
+  updateNestedObjectParser,
+  convertToObjectIdMongoose
 };
