@@ -181,6 +181,22 @@ class Electronics extends Product {
     }
     return newProduct;
   }
+
+  async updateProduct(product_id) {
+    const objectParams = removeUndefinedObject(this);
+    if (objectParams.product_attributes) {
+      await updateProductById({
+        product_id,
+        bodyUpdate: updateNestedObjectParser(objectParams),
+        model: clothing,
+      });
+    }
+    const updateProduct = await super.updateProduct(
+      product_id,
+      updateNestedObjectParser(objectParams)
+    );
+    return updateProduct;
+  }
 }
 
 // define class for furniture
@@ -198,6 +214,22 @@ class Furniture extends Product {
       throw new BadRequestError("Create new product error");
     }
     return newProduct;
+  }
+
+  async updateProduct(product_id) {
+    const objectParams = removeUndefinedObject(this);
+    if (objectParams.product_attributes) {
+      await updateProductById({
+        product_id,
+        bodyUpdate: updateNestedObjectParser(objectParams),
+        model: clothing,
+      });
+    }
+    const updateProduct = await super.updateProduct(
+      product_id,
+      updateNestedObjectParser(objectParams)
+    );
+    return updateProduct;
   }
 }
 
