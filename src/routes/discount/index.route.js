@@ -4,7 +4,7 @@ const express = require("express");
 const router = express.Router();
 const productController = require("../../controllers/product.controller");
 const { asyncHandler } = require("../../auth/checkAuth");
-const { authentication } = require("../../auth/authUtils");
+const { authenticationV2 } = require("../../auth/authUtils");
 const discountController = require("../../controllers/discount.controller");
 
 router.post("/amount", asyncHandler(discountController.getDiscountAmount));
@@ -14,7 +14,7 @@ router.get(
 );
 
 // authentication
-router.use(authentication);
+router.use(authenticationV2);
 ////////////////
 
 router.post("/create", asyncHandler(discountController.createDiscountCode));

@@ -4,12 +4,12 @@ const express = require("express");
 const router = express.Router();
 const { asyncHandler } = require("../../auth/checkAuth");
 const { authenticationV2 } = require("../../auth/authUtils");
-const checkoutController = require("../../controllers/checkout.controller");
+const inventoryController = require("../../controllers/inventory.controller");
 
 // authentication
 router.use(authenticationV2);
 ////////////////
 
-router.post("/review", asyncHandler(checkoutController.checkoutReview));
+router.post("/addStock", asyncHandler(inventoryController.checkoutReview));
 
 module.exports = router;

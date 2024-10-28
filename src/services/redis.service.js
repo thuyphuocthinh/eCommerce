@@ -25,6 +25,7 @@ const acquireLock = async (productId, quantity, cartId) => {
         quantity,
         cartId,
       });
+      // modifiedCount => 1 - success, 0 - error
       if (isReservation.modifiedCount) {
         await pexpire(key, expireTime);
         return key;
